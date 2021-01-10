@@ -1,0 +1,12 @@
+
+{% extends 'layout.html'%}
+{% block body %}
+<form action="/update/{{contact.0}}" method ='POST'>
+	<input type="text" name="fullname" placeholder="Nombre y apellido" value="{{contact.1}}" >	
+	<input type="text" name="email" placeholder="Email" value="{{contact.2}}">
+	<input type="text" name="phone" placeholder="Celular" value="{{contact.3}}">
+	<button type="submit">
+						Enviar
+	</button>
+</form>				
+{% endblock %}

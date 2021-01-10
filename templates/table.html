@@ -1,0 +1,62 @@
+	
+	{% extends 'layout.html' %}
+	{% block body %}
+	
+	
+	<!--EN ESTE DIV ROW, VA EL FORMULARIO, Y EN EL DIV COL 8 VA LA-->
+	<div class="row">		
+		<div class="col-md-4">
+			<!--AGRÉGO ESTO DENTRO DE LA COLUMNA DE 4 PARA QUE TOMÉ EL MISMO TAMAÑO-->
+			{% with messages = get_flashed_messages()%}
+			{% if messages %}
+			{% for message in messages%}
+				<div class="alert alert-success alert-dismissible fade show" role="alert">
+				  {{message}}
+				  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+			{% endfor %}
+			{% endif %}
+			{% endwith %}
+			<div class="card card-body">
+				<form action="/add_contact" method ='POST'>
+					<input type="text" name="fullname" placeholder="Nombre y apellido" class="form-control">	
+					<input type="text" name="email" placeholder="Email" class="form-control">
+					<input type="text" name="phone" placeholder="Celular" class="form-control">
+					<button type="submit" class="btn btn-primary btn-block">
+						Enviar
+					</button>
+				</form>
+			</div>
+		</div>
+		
+			<!--acá va la tabla-->
+		<div class="col-md-8">
+			<table class="table bg-light table-sm" style="color: #000">
+				<thead>
+					<tr>
+						<td>Fullname</td>
+						<td>Email</td>
+						<td>Phone</td>
+						<td>Operation</td>
+					</tr>
+				</thead>
+				<tbody>
+					{% for contact in contacts%}
+						<tr>
+							<td>{{contact.1}}</td>
+							<td>{{contact.2}}</td>
+							<td>{{contact.3}}</td>
+							<td>
+								<a href="/edit/{{contact.0}}" class="btn btn-success"> Edit</a>
+								<a href="/delete/{{contact.0}}" class="btn btn-danger">Delete</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>					
+		</div>		
+	</div>
+
+	
+		
+	{% endblock  %}
