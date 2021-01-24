@@ -37,7 +37,7 @@ def add_contact():
 		flash('Contact Added Successfully')
 		
 		""" PARA IMPRIMIR POR CONSOLA
-		ejemplo:
+		ejemplo y ver más:
 		print(fullname)
 		print(email)
 		print(phone)"""
